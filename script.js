@@ -13,10 +13,10 @@ const ICONS = {
 };
 
 const INFO_ICONS = {
-  phone: `<svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.63 19.79 19.79 0 01.07 5 2 2 0 012 2.82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 10a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`,
-  email: `<svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,
-  map:   `<svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
-  clock: `<svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>`,
+  phone: `<svg class="info-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.32.57 3.58.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.24 1.01L6.6 10.8z"/></svg>`,
+  email: `<svg class="info-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>`,
+  map:   `<svg class="info-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`,
+  clock: `<svg class="info-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>`,
 };
 
 // ── Imágenes por área ────────────────────────────
@@ -46,12 +46,13 @@ function init(c) {
   renderProceso(c.proceso);
   renderEquipo(c.equipo);
   renderExperiencia(c.experiencia);
-  renderTestimonios(c.testimonios);
+  renderEventos(c.eventos);
   renderContacto(c);
   renderFooter(c);
   renderMobileContact(c);
   initCanvas();
   initNav();
+  initStats();
   initReveal();
   initForm();
   setYear();
@@ -82,15 +83,23 @@ function renderHero(c) {
   );
 }
 
+function parseStatValue(valor) {
+  const m = String(valor).match(/^(\d+)(.*)/);
+  return m ? { num: parseInt(m[1]), suffix: m[2] } : { num: 0, suffix: valor };
+}
+
 function renderStats(stats) {
   const el = document.getElementById('stats-grid');
   if (!el) return;
-  el.innerHTML = stats.map(s => `
-    <div class="stat-item reveal" role="listitem">
-      <span class="stat-num">${s.valor}</span>
-      <span class="stat-label">${s.label}</span>
-    </div>
-  `).join('');
+  el.innerHTML = stats.map(s => {
+    const { num, suffix } = parseStatValue(s.valor);
+    return `
+      <div class="stat-item" role="listitem">
+        <span class="stat-num" data-target="${num}" data-suffix="${suffix}">0${suffix}</span>
+        <span class="stat-label" data-text="${s.label}"></span>
+      </div>
+    `;
+  }).join('');
 }
 
 function renderAreas(areas) {
@@ -177,22 +186,13 @@ function renderExperiencia(items) {
   `).join('');
 }
 
-function renderTestimonios(testimonios) {
-  const el = document.getElementById('test-list');
-  if (!el) return;
-  el.innerHTML = testimonios.map(t => `
-    <div class="test-item reveal">
-      <div class="test-person">
-        <div class="test-avatar" aria-hidden="true">${t.inicial}</div>
-        <cite class="test-nombre">${t.nombre}</cite>
-        <span class="test-area">${t.area}</span>
-      </div>
-      <div class="test-quote">
-        <span class="test-mark" aria-hidden="true">"</span>
-        <p class="test-texto">${t.texto}</p>
-      </div>
-    </div>
-  `).join('');
+function renderEventos(ev) {
+  setText('evento-subtitulo', ev.subtitulo);
+  const iframe = document.getElementById('evento-iframe');
+  if (iframe) {
+    iframe.src   = `https://www.youtube.com/embed/${ev.videoId}`;
+    iframe.title = ev.videoTitulo;
+  }
 }
 
 function renderContacto(c) {
@@ -213,7 +213,7 @@ function renderContacto(c) {
       </div></li>
       <li class="info-item">${INFO_ICONS.map}<div>
         <span class="info-label">Dirección</span>
-        <span class="info-val">${e.direccion}</span>
+        <span class="info-val"><a href="${e.mapsUrl}" target="_blank" rel="noopener">${e.direccion}</a></span>
       </div></li>
       <li class="info-item">${INFO_ICONS.clock}<div>
         <span class="info-label">Horario</span>
@@ -223,8 +223,9 @@ function renderContacto(c) {
   }
 
   setText('info-mat', `Matrícula: ${e.matricula}`);
-  setHref('contacto-wa', wa);
-  setHref('cta-wa',      wa);
+  setHref('contacto-wa',   wa);
+  setHref('contacto-maps', e.mapsUrl);
+  setHref('cta-wa',        wa);
   setHref('wa-float',    wa);
 
   setHref('footer-linkedin',  e.linkedin);
@@ -409,15 +410,73 @@ function initNav() {
 function renderMobileContact(c) {
   const el = document.getElementById('nav-panel-contact');
   if (!el) return;
-  const { telefono, whatsapp, email, horario } = c.estudio;
+  const { telefono, email, horario, direccion, mapsUrl } = c.estudio;
   el.innerHTML = `
     <div class="npc-item">${INFO_ICONS.phone}<span>${telefono}</span></div>
     <div class="npc-item">${INFO_ICONS.email}<a href="mailto:${email}">${email}</a></div>
+    <div class="npc-item">${INFO_ICONS.map}<a href="${mapsUrl}" target="_blank" rel="noopener">${direccion}</a></div>
     <div class="npc-item">${INFO_ICONS.clock}<span>${horario}</span></div>
   `;
 }
 
 // ── Reveal on scroll ──────────────────────────────
+// ── Stats: contador + typewriter ──────────────────
+function initStats() {
+  const items   = document.querySelectorAll('.stat-item');
+  if (!items.length) return;
+
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      observer.unobserve(entry.target);
+
+      const item    = entry.target;
+      const numEl   = item.querySelector('.stat-num');
+      const labelEl = item.querySelector('.stat-label');
+
+      item.classList.add('animated');
+
+      if (reduced) {
+        if (numEl)   numEl.textContent   = numEl.dataset.target   + (numEl.dataset.suffix   || '');
+        if (labelEl) labelEl.textContent = labelEl.dataset.text   || '';
+        return;
+      }
+
+      // Contador con ease-out cúbico
+      if (numEl) {
+        const target   = parseInt(numEl.dataset.target) || 0;
+        const suffix   = numEl.dataset.suffix || '';
+        const duration = 2600;
+        const t0       = performance.now();
+
+        (function tick(now) {
+          const p     = Math.min((now - t0) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 3);
+          numEl.textContent = Math.round(target * eased) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        })(performance.now());
+      }
+
+      // Typewriter: todos los labels al mismo tiempo
+      if (labelEl) {
+        const text = labelEl.dataset.text || '';
+        let i = 0;
+        labelEl.textContent = '';
+        (function type() {
+          if (i < text.length) {
+            labelEl.textContent += text[i++];
+            setTimeout(type, 52);
+          }
+        })();
+      }
+    });
+  }, { threshold: 0.55 });
+
+  items.forEach(item => observer.observe(item));
+}
+
 function initReveal() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

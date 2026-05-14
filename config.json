@@ -89,24 +89,9 @@
     { "titulo": "Constitución y asesoramiento de sociedades",         "desc": "Acompañamiento legal en la creación, reestructuración y disolución de sociedades comerciales." },
     { "titulo": "Procesos sucesorios y planificación patrimonial",    "desc": "Gestión integral de sucesiones y asesoramiento para la organización y transmisión ordenada del patrimonio familiar." }
   ],
-  "testimonios": [
-    {
-      "texto":   "Desde el primer contacto recibí una explicación clara sobre mi situación y los pasos posibles. El acompañamiento fue serio, ordenado y sin apuros. Exactamente lo que necesitaba en ese momento.",
-      "nombre":  "Patricia R.",
-      "area":    "Derecho de Familia",
-      "inicial": "P"
-    },
-    {
-      "texto":   "Trabajamos con el estudio para la constitución de nuestra empresa y el seguimiento de contratos. La respuesta es rápida, el lenguaje claro y el asesoramiento siempre orientado a proteger nuestros intereses.",
-      "nombre":  "Desarrollos Atlántico S.A.",
-      "area":    "Derecho Comercial",
-      "inicial": "D"
-    },
-    {
-      "texto":   "Después de un accidente de tránsito no sabía cómo proceder. El Dr. Salas me guió paso a paso, con mucha paciencia y transparencia. El proceso fue claro y el resultado, justo.",
-      "nombre":  "Claudio M.",
-      "area":    "Daños y Perjuicios",
-      "inicial": "C"
-    }
-  ]
+  "eventos": {
+    "subtitulo": "Seguimos de cerca los cambios en el panorama jurídico. Compartimos recursos y eventos que consideramos relevantes para nuestros clientes y la comunidad.",
+    "videoId":   "c2tOp7OxyQ8",
+    "videoTitulo": "Bryan Stevenson: We need to talk about an injustice — TED"
+  }
 }
