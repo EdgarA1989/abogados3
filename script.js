@@ -146,7 +146,11 @@ function renderProceso(pasos) {
   if (!el) return;
   el.innerHTML = pasos.map(p => `
     <li class="paso-item reveal">
-      <div class="paso-num" aria-hidden="true">${p.num}</div>
+      <div class="paso-indicator">
+        <div class="paso-circle">
+          <span class="paso-num">${p.num}</span>
+        </div>
+      </div>
       <div class="paso-body">
         <h3 class="paso-title">${p.titulo}</h3>
         <p class="paso-desc">${p.desc}</p>
