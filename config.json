@@ -1,0 +1,112 @@
+{
+  "estudio": {
+    "nombre":    "Salas & Moreira",
+    "tagline":   "Estudio Jurídico · Buenos Aires",
+    "fundado":   2004,
+    "matricula": "CPACF T° 98 F° 224",
+    "telefono":  "+54 11 5123-4400",
+    "whatsapp":  "5491151234400",
+    "email":     "consultas@salasmoreira.com.ar",
+    "direccion": "Maipú 942, Piso 7, Ciudad Autónoma de Buenos Aires",
+    "mapsUrl":   "https://maps.google.com/?q=Maipú+942+Buenos+Aires",
+    "horario":   "Lunes a viernes · 9:00 a 19:00 h",
+    "linkedin":  "#",
+    "instagram": "#"
+  },
+  "hero": {
+    "eyebrow":   "Estudio Jurídico · Más de 20 años de trayectoria",
+    "titulo":    "Asesoramiento legal estratégico para decisiones que importan",
+    "subtitulo": "Brindamos soluciones jurídicas claras, confidenciales y personalizadas para personas, empresas e instituciones. En Salas & Moreira, cada caso recibe la atención que merece.",
+    "badges":    ["Atención confidencial", "Estrategia personalizada", "Experiencia profesional", "Acompañamiento integral"]
+  },
+  "stats": [
+    { "valor": "20+",    "label": "Años de experiencia" },
+    { "valor": "900+",   "label": "Consultas asesoradas" },
+    { "valor": "100%",   "label": "Confidencialidad garantizada" },
+    { "valor": "24 hs",  "label": "Tiempo de respuesta" }
+  ],
+  "areas": [
+    { "titulo": "Derecho Civil",             "descripcion": "Contratos, daños y perjuicios, responsabilidad civil y mediación prejudicial.",         "icono": "balance"   },
+    { "titulo": "Derecho Laboral",           "descripcion": "Despidos, liquidaciones, accidentes de trabajo y negociación sindical.",                  "icono": "briefcase" },
+    { "titulo": "Derecho Comercial",         "descripcion": "Sociedades, contratos comerciales, concursos, quiebras y propiedad intelectual.",         "icono": "building"  },
+    { "titulo": "Derecho de Familia",        "descripcion": "Divorcios, alimentos, tenencia, adopción y protección contra violencia familiar.",        "icono": "family"    },
+    { "titulo": "Sucesiones",                "descripcion": "Apertura de sucesiones, adjudicación de bienes y conflictos hereditarios.",               "icono": "document"  },
+    { "titulo": "Contratos",                 "descripcion": "Redacción, revisión y negociación de contratos civiles y comerciales.",                   "icono": "pen"       },
+    { "titulo": "Daños y Perjuicios",        "descripcion": "Reclamos por accidentes, mala praxis y responsabilidad civil extracontractual.",          "icono": "shield"    },
+    { "titulo": "Asesoramiento a Empresas",  "descripcion": "Consultoría jurídica integral, constitución de sociedades y contratos empresariales.",     "icono": "chart"     }
+  ],
+  "nosotros": {
+    "desde":  2004,
+    "slogan": "Rigor técnico y compromiso humano en cada caso",
+    "texto":  [
+      "En Salas & Moreira trabajamos con la convicción de que el derecho es una herramienta al servicio de las personas. Desde 2004 acompañamos a individuos, familias y empresas en los momentos más exigentes de su vida jurídica.",
+      "Nuestro equipo analiza cada situación con rigor técnico y sensibilidad humana, brindando asesoramiento estratégico, transparente y orientado a resultados concretos. La confianza que deposita cada cliente es el eje de nuestro trabajo."
+    ],
+    "valores": [
+      "Confidencialidad absoluta en todas las consultas",
+      "Transparencia en honorarios y procesos",
+      "Estrategia legal adaptada a cada situación",
+      "Atención personalizada y directa con profesionales"
+    ]
+  },
+  "proceso": [
+    { "num": "01", "titulo": "Consulta inicial",         "desc": "Escuchamos su situación en detalle, sin compromiso. La primera consulta es gratuita y totalmente confidencial." },
+    { "num": "02", "titulo": "Análisis del caso",        "desc": "Evaluamos la situación jurídica, los antecedentes y la documentación para definir los caminos posibles." },
+    { "num": "03", "titulo": "Diseño de estrategia",     "desc": "Diseñamos una estrategia legal personalizada, explicada con claridad y adaptada a sus objetivos." },
+    { "num": "04", "titulo": "Seguimiento y resolución", "desc": "Acompañamos cada etapa del proceso e informamos de manera permanente sobre el avance del caso." }
+  ],
+  "equipo": [
+    {
+      "nombre":       "Dr. Rodrigo Salas",
+      "cargo":        "Socio Fundador",
+      "especialidad": "Derecho Civil y Contratos",
+      "descripcion":  "Abogado egresado de la UBA con más de 20 años de experiencia en litigios civiles, contratos y asesoramiento patrimonial. Docente universitario y árbitro habilitado.",
+      "email":        "r.salas@salasmoreira.com.ar",
+      "inicial":      "S"
+    },
+    {
+      "nombre":       "Dra. Valentina Moreira",
+      "cargo":        "Socia Directora",
+      "especialidad": "Derecho de Familia y Laboral",
+      "descripcion":  "Especializada en procesos de familia, mediación y conflictos laborales. Más de 15 años de trayectoria en el fuero civil y laboral. Referente en acuerdos extrajudiciales.",
+      "email":        "v.moreira@salasmoreira.com.ar",
+      "inicial":      "M"
+    },
+    {
+      "nombre":       "Dr. Gabriel Linares",
+      "cargo":        "Abogado Senior",
+      "especialidad": "Derecho Comercial y Empresarial",
+      "descripcion":  "Consultor jurídico especializado en derecho societario, contratos comerciales y asesoramiento a empresas medianas. Experiencia en transacciones corporativas y propiedad intelectual.",
+      "email":        "g.linares@salasmoreira.com.ar",
+      "inicial":      "L"
+    }
+  ],
+  "experiencia": [
+    { "titulo": "Asesoramiento en conflictos civiles y comerciales",  "desc": "Acompañamiento jurídico integral en disputas entre particulares, reclamos patrimoniales y responsabilidades contractuales." },
+    { "titulo": "Acompañamiento en procesos laborales",               "desc": "Representación y asesoramiento en relaciones de trabajo, con foco en acuerdos razonables y protección de derechos." },
+    { "titulo": "Planificación contractual preventiva",               "desc": "Redacción y auditoría de contratos para prevenir conflictos antes de que surjan y proteger los intereses del cliente." },
+    { "titulo": "Gestión de acuerdos y mediaciones",                  "desc": "Facilitación de acuerdos extrajudiciales y representación en mediación prejudicial en múltiples fueros." },
+    { "titulo": "Constitución y asesoramiento de sociedades",         "desc": "Acompañamiento legal en la creación, reestructuración y disolución de sociedades comerciales." },
+    { "titulo": "Procesos sucesorios y planificación patrimonial",    "desc": "Gestión integral de sucesiones y asesoramiento para la organización y transmisión ordenada del patrimonio familiar." }
+  ],
+  "testimonios": [
+    {
+      "texto":   "Desde el primer contacto recibí una explicación clara sobre mi situación y los pasos posibles. El acompañamiento fue serio, ordenado y sin apuros. Exactamente lo que necesitaba en ese momento.",
+      "nombre":  "Patricia R.",
+      "area":    "Derecho de Familia",
+      "inicial": "P"
+    },
+    {
+      "texto":   "Trabajamos con el estudio para la constitución de nuestra empresa y el seguimiento de contratos. La respuesta es rápida, el lenguaje claro y el asesoramiento siempre orientado a proteger nuestros intereses.",
+      "nombre":  "Desarrollos Atlántico S.A.",
+      "area":    "Derecho Comercial",
+      "inicial": "D"
+    },
+    {
+      "texto":   "Después de un accidente de tránsito no sabía cómo proceder. El Dr. Salas me guió paso a paso, con mucha paciencia y transparencia. El proceso fue claro y el resultado, justo.",
+      "nombre":  "Claudio M.",
+      "area":    "Daños y Perjuicios",
+      "inicial": "C"
+    }
+  ]
+}
