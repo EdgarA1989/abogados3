@@ -22,15 +22,25 @@
           <span class="logo__sub">Abogados</span>
         </span>
       </a>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-panel">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
     </div>
   </header>
 
+  <!-- Botón hamburguesa — standalone para poder quedar sobre el backdrop -->
+  <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-panel">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
   <nav class="nav-panel" id="nav-panel" aria-label="Navegación principal">
+    <!-- Logo al tope del panel -->
+    <div class="nav-panel__logo" aria-hidden="true">
+      <span class="logo__mark">S&amp;M</span>
+      <span class="logo__text">
+        <span class="logo__name" id="nav-panel-nombre">Salas &amp; Moreira</span>
+        <span class="logo__sub">Abogados</span>
+      </span>
+    </div>
     <ul class="nav-menu" id="nav-menu" role="list">
       <li><a href="#inicio"       class="nav-link">Inicio</a></li>
       <li><a href="#servicios"    class="nav-link">Servicios</a></li>

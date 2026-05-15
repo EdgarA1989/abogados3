@@ -61,7 +61,8 @@ function init(c) {
 // ── Renderizadores ────────────────────────────────
 
 function renderNav(c) {
-  setText('nav-nombre', c.estudio.nombre);
+  setText('nav-nombre',       c.estudio.nombre);
+  setText('nav-panel-nombre', c.estudio.nombre);
 }
 
 function renderHero(c) {
