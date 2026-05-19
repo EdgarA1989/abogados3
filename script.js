@@ -32,6 +32,10 @@ const AREA_IMAGES = {
 };
 
 // ── Carga ────────────────────────────────────────
+const THEME_STORAGE_KEY = 'abogados3-theme';
+
+initTheme();
+
 fetch('config.json')
   .then(r => r.json())
   .then(init)
@@ -59,6 +63,34 @@ function init(c) {
 }
 
 // ── Renderizadores ────────────────────────────────
+
+function initTheme() {
+  const toggle = document.getElementById('theme-toggle');
+  const storedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+  const initialTheme = storedTheme === 'dark' ? 'dark' : 'light';
+
+  applyTheme(initialTheme);
+
+  toggle?.addEventListener('click', () => {
+    const nextTheme = document.body.classList.contains('theme-dark') ? 'light' : 'dark';
+    applyTheme(nextTheme);
+    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+  });
+}
+
+function applyTheme(theme) {
+  const isDark = theme === 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.body.classList.toggle('theme-dark', isDark);
+
+  const toggle = document.getElementById('theme-toggle');
+  if (!toggle) return;
+  toggle.setAttribute('aria-pressed', String(isDark));
+  toggle.setAttribute('aria-label', isDark ? 'Activar modo claro' : 'Activar modo oscuro');
+
+  const text = toggle.querySelector('.theme-toggle__text');
+  if (text) text.textContent = isDark ? 'Claro' : 'Oscuro';
+}
 
 function renderNav(c) {
   setText('nav-nombre',       c.estudio.nombre);

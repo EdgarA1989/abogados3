@@ -162,6 +162,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   height:      74px;
   gap:         1rem;
+  position:    relative;
+  z-index:     1002;
 }
 
 .logo {
@@ -266,7 +268,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display:         flex;
   align-items:     center;
   justify-content: flex-end;
-  padding-right:   max(1rem, calc((100% - var(--container)) / 2));
+  padding-right:   max(4.9rem, calc((100% - var(--container)) / 2 + 4rem));
   pointer-events:  none;
   z-index:         1001;
 }
@@ -276,6 +278,56 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .nav-panel__contact { display: none; }
 
 .nav-backdrop { display: none; }
+
+.theme-toggle {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  width: 44px;
+  padding: 0;
+  border: 1px solid rgba(201,162,39,.48);
+  border-radius: 50%;
+  background: rgba(7,17,30,.72);
+  color: var(--cream);
+  box-shadow: 0 8px 22px rgba(0,0,0,.24);
+  backdrop-filter: blur(14px);
+  transition: background var(--transition), border-color var(--transition),
+              color var(--transition), box-shadow var(--transition);
+}
+.theme-toggle:hover {
+  background: rgba(13,32,53,.94);
+  border-color: var(--gold);
+  box-shadow: 0 10px 26px rgba(0,0,0,.32);
+}
+.theme-toggle__icon {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  position: relative;
+  flex-shrink: 0;
+}
+.theme-toggle__icon::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.theme-toggle__text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
 
 /* ── Hero ───────────────────────────────────────── */
 .hero {
@@ -1439,6 +1491,198 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* ── Reveal ─────────────────────────────────────── */
+/* Modo oscuro */
+body.theme-dark {
+  --deep:      #050506;
+  --navy:      #101112;
+  --navy-mid:  #1d1e20;
+  --navy-lt:   #d4d7dc;
+  --gold:      #c9a64a;
+  --gold-lt:   #f0d27a;
+  --gold-pale: #554518;
+  --cream:     #09090a;
+  --cream-alt: #111113;
+  --white:     #ffffff;
+  --text:      #f6f7f9;
+  --text-md:   #d8dbe1;
+  --text-lt:   #b1b5bd;
+  --border:    rgba(255,255,255,.14);
+  --border-dk: rgba(255,255,255,.14);
+  --shadow-sm: 0 1px 8px rgba(0,0,0,.28);
+  --shadow-md: 0 10px 30px rgba(0,0,0,.34);
+  --shadow-lg: 0 18px 48px rgba(0,0,0,.42);
+  color: var(--text);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(201,166,74,.14), transparent 32rem),
+    linear-gradient(180deg, #050506 0%, #111113 48%, #050506 100%);
+}
+
+body.theme-dark .theme-toggle {
+  background: rgba(201,166,74,.16);
+  color: var(--white);
+  border-color: rgba(212,215,220,.52);
+  box-shadow: 0 10px 28px rgba(0,0,0,.42), inset 0 0 0 1px rgba(240,210,122,.12);
+}
+body.theme-dark .theme-toggle:hover {
+  background: rgba(201,166,74,.28);
+  border-color: var(--gold-lt);
+  box-shadow: 0 12px 30px rgba(0,0,0,.46), 0 0 18px rgba(201,166,74,.24);
+}
+body.theme-dark .theme-toggle__icon::after {
+  width: 4px;
+  height: 4px;
+  top: 5px;
+  right: 5px;
+}
+
+body.theme-dark .header.scrolled {
+  background: rgba(5,5,6,.94);
+  border-color: rgba(201,166,74,.3);
+}
+
+body.theme-dark .hero-overlay {
+  background: linear-gradient(to bottom,
+    rgba(5,5,6,.62) 0%,
+    rgba(5,5,6,.44) 42%,
+    rgba(5,5,6,.88) 100%);
+}
+
+body.theme-dark .hero-eyebrow {
+  color: var(--white);
+}
+
+body.theme-dark .areas,
+body.theme-dark .experiencia {
+  background:
+    radial-gradient(circle at 12% 14%, rgba(201,166,74,.11), transparent 22rem),
+    var(--cream);
+}
+body.theme-dark .nosotros,
+body.theme-dark .equipo,
+body.theme-dark .eventos {
+  background: #0c0c0e;
+}
+body.theme-dark .proceso,
+body.theme-dark .contacto {
+  background: var(--cream-alt);
+}
+body.theme-dark .stats-section,
+body.theme-dark .cta-final,
+body.theme-dark .footer {
+  background: linear-gradient(145deg, #020203 0%, #0c0c0e 58%, #221d10 100%);
+}
+
+body.theme-dark .stats-section {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(201,166,74,.08)),
+    #17181b;
+  border-top-color: rgba(240,210,122,.36);
+  border-bottom-color: rgba(255,255,255,.12);
+}
+
+body.theme-dark .area-card,
+body.theme-dark .team-card,
+body.theme-dark .info-card {
+  background: rgba(22,22,24,.94);
+  border-color: rgba(255,255,255,.14);
+  box-shadow: 0 12px 34px rgba(0,0,0,.24);
+}
+body.theme-dark .area-card:hover,
+body.theme-dark .team-card:hover {
+  box-shadow: 0 18px 46px rgba(0,0,0,.38);
+}
+
+body.theme-dark .nosotros-visual,
+body.theme-dark .paso-circle,
+body.theme-dark .paso-body {
+  background: rgba(12,12,14,.9);
+}
+body.theme-dark .paso-body {
+  border-color: rgba(201,166,74,.28);
+}
+body.theme-dark .paso-desc,
+body.theme-dark .proceso .section-desc,
+body.theme-dark .cta-desc {
+  color: rgba(244,247,251,.68);
+}
+
+body.theme-dark .exp-item,
+body.theme-dark .team-card__esp,
+body.theme-dark .info-mat {
+  border-color: rgba(255,255,255,.14);
+}
+body.theme-dark .evento-wrap {
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 16px 48px rgba(0,0,0,.46);
+}
+
+body.theme-dark .form-input {
+  background: rgba(9,9,10,.86);
+  border-color: rgba(255,255,255,.18);
+  color: var(--text);
+}
+body.theme-dark .form-input::placeholder {
+  color: rgba(215,217,223,.58);
+}
+body.theme-dark .form-input:focus {
+  border-color: var(--gold-lt);
+  box-shadow: 0 0 0 3px rgba(201,166,74,.2);
+}
+body.theme-dark .form-success {
+  background: rgba(38,104,57,.2);
+  border-color: rgba(122,201,138,.55);
+  color: #baf1c5;
+}
+body.theme-dark .privacy-link,
+body.theme-dark .info-val a,
+body.theme-dark .team-card__email,
+body.theme-dark .area-card__link {
+  color: var(--gold-lt);
+}
+body.theme-dark .btn--primary {
+  color: var(--gold-lt);
+  border-color: var(--gold);
+}
+body.theme-dark .btn--primary::after {
+  background: linear-gradient(135deg, #b8953c, #f0d27a);
+}
+body.theme-dark .btn--primary:hover {
+  color: #080808;
+  box-shadow: 0 8px 24px rgba(201,166,74,.32), inset 0 0 0 1px rgba(255,255,255,.26);
+}
+body.theme-dark .btn--gold,
+body.theme-dark .btn--ghost-gold {
+  color: var(--gold-lt);
+  border-color: var(--gold);
+}
+body.theme-dark .btn--gold::after,
+body.theme-dark .btn--ghost-gold::after {
+  background: linear-gradient(135deg, #b8953c, #f0d27a);
+}
+body.theme-dark .btn--gold:hover,
+body.theme-dark .btn--ghost-gold:hover {
+  color: #080808;
+  box-shadow: 0 8px 28px rgba(201,166,74,.36);
+}
+body.theme-dark .btn--outline {
+  color: #f6f7f9;
+  border-color: rgba(212,215,220,.6);
+}
+body.theme-dark .btn--outline::after {
+  background: linear-gradient(135deg, #f6f7f9, #b1b5bd);
+}
+body.theme-dark .btn--outline:hover {
+  color: #080808;
+  border-color: #f6f7f9;
+  box-shadow: 0 8px 24px rgba(177,181,189,.22);
+}
+body.theme-dark .btn-maps {
+  background: #191a1d;
+}
+body.theme-dark .btn-maps:hover {
+  background: #24252a;
+}
+
 .reveal {
   opacity:    0;
   transform:  translateY(22px);
@@ -1452,6 +1696,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── Responsive ─────────────────────────────────── */
 @media (max-width: 1100px) {
+  .nav-link {
+    padding-inline: .56rem;
+    font-size: .82rem;
+  }
+
+  .nav-cta {
+    margin-left: .25rem;
+  }
+
   .areas-grid   { grid-template-columns: repeat(4, 1fr); }
   .nosotros-inner  { grid-template-columns: 1fr; }
   .nosotros-visual {
@@ -1485,6 +1738,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 768px) {
+  .theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 4.75rem;
+    z-index: 1060;
+  }
+
   /* ── Hamburguesa — posición fixed independiente del header ── */
   .nav-toggle {
     display:    flex;
