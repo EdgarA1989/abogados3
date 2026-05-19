@@ -937,6 +937,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width:   52px;
 }
 
+@media (max-width: 640px) {
+  .paso-item.is-mobile-highlight .paso-circle {
+    background:  var(--gold);
+    transform:   scale(1.1);
+    box-shadow:  0 0 32px rgba(201,162,39,.4), 0 0 10px rgba(201,162,39,.25);
+  }
+
+  .paso-item.is-mobile-highlight .paso-num {
+    color: var(--deep);
+  }
+
+  .paso-item.is-mobile-highlight .paso-body {
+    border-color: rgba(201,162,39,.4);
+    background:   rgba(255,255,255,.07);
+  }
+
+  .paso-item.is-mobile-highlight .paso-body::before {
+    opacity: 1;
+    width:   52px;
+  }
+}
+
 .paso-title {
   font-family:   var(--ff-display);
   font-size:     1.05rem;
@@ -1586,6 +1608,9 @@ body.theme-dark .info-card {
   background: rgba(22,22,24,.94);
   border-color: rgba(255,255,255,.14);
   box-shadow: 0 12px 34px rgba(0,0,0,.24);
+}
+body.theme-dark .info-card__title {
+  color: var(--text);
 }
 body.theme-dark .area-card:hover,
 body.theme-dark .team-card:hover {

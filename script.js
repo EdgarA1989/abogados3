@@ -58,6 +58,7 @@ function init(c) {
   initNav();
   initStats();
   initReveal();
+  initProcessMobileHighlight();
   initForm();
   setYear();
 }
@@ -530,6 +531,22 @@ function initReveal() {
 }
 
 // ── Formulario ────────────────────────────────────
+function initProcessMobileHighlight() {
+  const firstStep = document.querySelector('#proceso-list > li:first-child');
+  if (!firstStep || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const mobileQuery = window.matchMedia('(max-width: 640px)');
+  if (!mobileQuery.matches) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      firstStep.classList.toggle('is-mobile-highlight', entry.isIntersecting);
+    });
+  }, { threshold: 0.55 });
+
+  observer.observe(firstStep);
+}
+
 function initForm() {
   const form    = document.getElementById('contact-form');
   const success = document.getElementById('form-success');
