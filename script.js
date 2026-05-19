@@ -532,8 +532,8 @@ function initReveal() {
 
 // ── Formulario ────────────────────────────────────
 function initProcessMobileHighlight() {
-  const firstStep = document.querySelector('#proceso-list > li:first-child');
-  if (!firstStep || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const steps = document.querySelectorAll('#proceso-list > li');
+  if (!steps.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
@@ -544,7 +544,7 @@ function initProcessMobileHighlight() {
     rootMargin: '-35% 0px -35% 0px',
   });
 
-  observer.observe(firstStep);
+  steps.forEach(step => observer.observe(step));
 }
 
 function initForm() {
