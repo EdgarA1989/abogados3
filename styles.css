@@ -957,6 +957,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
     opacity: 1;
     width:   52px;
   }
+
+  body.theme-dark .paso-item.is-mobile-highlight .paso-circle {
+    box-shadow:  0 0 32px rgba(201,166,74,.44), 0 0 10px rgba(240,210,122,.28);
+  }
+
+  body.theme-dark .paso-item.is-mobile-highlight .paso-body {
+    border-color: rgba(201,166,74,.46);
+    background: rgba(255,255,255,.09);
+  }
 }
 
 .paso-title {
@@ -1610,7 +1619,7 @@ body.theme-dark .info-card {
   box-shadow: 0 12px 34px rgba(0,0,0,.24);
 }
 body.theme-dark .info-card__title {
-  color: var(--text);
+  color: var(--white);
 }
 body.theme-dark .area-card:hover,
 body.theme-dark .team-card:hover {

@@ -535,14 +535,14 @@ function initProcessMobileHighlight() {
   const firstStep = document.querySelector('#proceso-list > li:first-child');
   if (!firstStep || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const mobileQuery = window.matchMedia('(max-width: 640px)');
-  if (!mobileQuery.matches) return;
-
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      firstStep.classList.toggle('is-mobile-highlight', entry.isIntersecting);
+      entry.target.classList.toggle('is-mobile-highlight', entry.isIntersecting);
     });
-  }, { threshold: 0.55 });
+  }, {
+    threshold: 0,
+    rootMargin: '-35% 0px -35% 0px',
+  });
 
   observer.observe(firstStep);
 }
