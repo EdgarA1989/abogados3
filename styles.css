@@ -1501,24 +1501,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── WhatsApp flotante ──────────────────────────── */
 .wa-float {
-  position:        fixed;
-  bottom:          1.75rem;
-  right:           1.75rem;
-  z-index:         900;
-  width:           58px;
-  height:          58px;
-  border-radius:   50%;
-  background:      #25d366;
-  color:           var(--white);
-  display:         flex;
-  align-items:     center;
-  justify-content: center;
-  box-shadow:      0 4px 20px rgba(37,211,102,.5);
-  transition:      transform var(--transition), box-shadow var(--transition);
+  position:   fixed;
+  bottom:     1.75rem;
+  right:      1.75rem;
+  z-index:    900;
+  width:      58px;
+  height:     58px;
+  display:    block;
+  transition: transform var(--transition), box-shadow var(--transition);
+  filter:     drop-shadow(0 4px 12px rgba(37,211,102,.45));
 }
 .wa-float:hover {
-  transform:  scale(1.1);
-  box-shadow: 0 6px 28px rgba(37,211,102,.6);
+  transform: scale(1.1);
+  filter:    drop-shadow(0 6px 18px rgba(37,211,102,.6));
+}
+.wa-float__img {
+  width:  100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 /* ── Reveal ─────────────────────────────────────── */
@@ -1954,7 +1955,7 @@ body.theme-dark .btn-maps:hover {
   .cta-actions    { flex-direction: column; align-items: center; }
   .cta-actions .btn { width: 100%; max-width: 300px; }
   .footer-grid    { grid-template-columns: 1fr; }
-  .wa-float       { bottom: 1.25rem; right: 1.25rem; width: 52px; height: 52px; }
+  .wa-float       { bottom: 1.25rem; right: 1.25rem; width: 50px; height: 50px; }
 }
 
 @media (max-width: 440px) {
